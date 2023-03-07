@@ -7,7 +7,6 @@
 !.gitignore
 .class
 
-
 # Compiled class file
 *.class
 
@@ -28,6 +27,7 @@
 *.zip
 *.tar.gz
 *.rar
+
 *~
 .fuse_hidden*
 .directory
@@ -60,6 +60,7 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
