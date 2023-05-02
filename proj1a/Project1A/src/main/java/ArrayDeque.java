@@ -1,4 +1,7 @@
 public class ArrayDeque<T> {
+    public static final int ARRAYLENGTHFORUSAGECHECK = 16;
+    public static final int HUNDRED = 100;
+    public static final int LOW_USAGE = 25;
     private T[] items;
     private int size;
     private int nextFirst;
@@ -16,13 +19,13 @@ public class ArrayDeque<T> {
         arrayUsage = 0;
     }
 
-    private void resize(int newLength){
+    private void resize(int newLength) {
         T[] newArray = (T[]) new Object[newLength];
         for (int i = 0; i < size; i++) {
             int arrayIndex;
-            arrayIndex = (i + nextFirst + 1) >= arrayLength ?
-                    (i + nextFirst + 1 - arrayLength) : (i + nextFirst + 1);
-            newArray[i] = items [arrayIndex];
+            arrayIndex = (i + nextFirst + 1) >= arrayLength
+                    ? (i + nextFirst + 1 - arrayLength) : (i + nextFirst + 1);
+            newArray[i] = items[arrayIndex];
         }
         arrayLength = newLength;
         nextFirst = newLength - 1;
@@ -31,9 +34,9 @@ public class ArrayDeque<T> {
     }
 
     private void checkArrayUsage() {
-        if (arrayLength >= 16) {
-            arrayUsage = size * 100 / arrayLength;
-            if (arrayUsage < 25) {
+        if (arrayLength >= ARRAYLENGTHFORUSAGECHECK) {
+            arrayUsage = size * HUNDRED / arrayLength;
+            if (arrayUsage < LOW_USAGE) {
                 resize(arrayLength / 2);
             }
         }
@@ -52,18 +55,18 @@ public class ArrayDeque<T> {
         if (size == arrayLength) {
             resize(size * 2);
         }
+
         items[nextLast] = item;
         nextLast = (nextLast + 1) == arrayLength ? (nextLast + 1 - arrayLength) : (nextLast + 1);
         size += 1;
     }
 
     public boolean isEmpty() {
-        if (size == 0){
+        if (size == 0) {
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
+
     }
 
     public int size() {
@@ -123,8 +126,8 @@ public class ArrayDeque<T> {
             return null;
         }
         int getArrayIndex;
-        getArrayIndex = (nextFirst + index + 1) >= arrayLength ?
-                (nextFirst + index + 1 - arrayLength) : (nextFirst + index + 1);
+        getArrayIndex = (nextFirst + index + 1) >= arrayLength
+                ? (nextFirst + index + 1 - arrayLength) : (nextFirst + index + 1);
         return items[getArrayIndex];
     }
 

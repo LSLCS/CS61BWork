@@ -1,8 +1,8 @@
 public class LinkedListDeque<T> {
     private class Alloc {
-        public T item;
-        public Alloc prev;
-        public Alloc next;
+        private T item;
+        private Alloc prev;
+        private Alloc next;
 
         public Alloc(T item, Alloc prev, Alloc next) {
             this.item = item;
@@ -37,12 +37,10 @@ public class LinkedListDeque<T> {
     }
 
     public boolean isEmpty() {
-        if (size == 0){
+        if (size == 0) {
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
 
     public int size() {
@@ -98,14 +96,14 @@ public class LinkedListDeque<T> {
         if (isEmpty() || index > size || index < 0) {
             return null;
         }
-        return getAllocRecursive(index,sentinel.next).item;
+        return getAllocRecursive(index, sentinel.next).item;
     }
 
     private Alloc getAllocRecursive(int index, Alloc a) {
         if (index == 0) {
             return a;
         }
-        return getAllocRecursive(index-1, a.next);
+        return getAllocRecursive(index - 1, a.next);
     }
 
 }
