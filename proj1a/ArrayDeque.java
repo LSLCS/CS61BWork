@@ -1,7 +1,7 @@
 public class ArrayDeque<T> {
-    public static final int ARRAYLENGTHFORUSAGECHECK = 16;
-    public static final int HUNDRED = 100;
-    public static final int LOW_USAGE = 25;
+    private static final int ARRAYLENGTHFORUSAGECHECK = 16;
+    private static final int HUNDRED = 100;
+    private static final int LOW_USAGE = 25;
     private T[] items;
     private int size;
     private int nextFirst;
@@ -47,7 +47,8 @@ public class ArrayDeque<T> {
             resize(size * 2);
         }
         items[nextFirst] = item;
-        nextFirst = (nextFirst - 1) < 0 ? (arrayLength + nextFirst - 1) : (nextFirst - 1);
+        nextFirst = (nextFirst - 1) < 0
+                ? (arrayLength + nextFirst - 1) : (nextFirst - 1);
         size += 1;
     }
 
@@ -57,7 +58,8 @@ public class ArrayDeque<T> {
         }
 
         items[nextLast] = item;
-        nextLast = (nextLast + 1) == arrayLength ? (nextLast + 1 - arrayLength) : (nextLast + 1);
+        nextLast = (nextLast + 1) == arrayLength
+                ? (nextLast + 1 - arrayLength) : (nextLast + 1);
         size += 1;
     }
 
@@ -79,7 +81,8 @@ public class ArrayDeque<T> {
         }
         for (int i = 1; i <= size; i++) {
             int printIndex;
-            printIndex = (i + nextFirst) >= arrayLength ? (i + nextFirst - arrayLength) : (i + nextFirst);
+            printIndex = (i + nextFirst) >= arrayLength
+                    ? (i + nextFirst - arrayLength) : (i + nextFirst);
             System.out.print(items[printIndex]);
             if (i != size) {
                 System.out.print(" ");
@@ -94,7 +97,8 @@ public class ArrayDeque<T> {
         }
 
         int firstIndex;
-        firstIndex = (nextFirst + 1) >= arrayLength ? (nextFirst + 1 - arrayLength) : (nextFirst + 1);
+        firstIndex = (nextFirst + 1) >= arrayLength
+                ? (nextFirst + 1 - arrayLength) : (nextFirst + 1);
         size -= 1;
         T firstItem = items[firstIndex];
         items[firstIndex] = null;
@@ -111,7 +115,8 @@ public class ArrayDeque<T> {
             return null;
         }
         int lastIndex;
-        lastIndex = (nextLast - 1) < 0 ? (arrayLength + nextLast - 1) : (nextLast - 1);
+        lastIndex = (nextLast - 1) < 0
+                ? (arrayLength + nextLast - 1) : (nextLast - 1);
         size -= 1;
         T lastItem = items[lastIndex];
         items[lastIndex] = null;
